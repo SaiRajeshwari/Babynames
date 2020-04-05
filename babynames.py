@@ -88,11 +88,16 @@ def main():
   # or write it to a summary file
   for filename in args:
     name_ranks = extract_names(filename)
+    text = '\n'.join(name_ranks)
     if not summary:
-      print('\n'.join(name_ranks))
+      # Part A
+      print(text)
     else:
+      # Part B
       # write to summary
-      pass
+      out = open(filename + '.summary', 'w')
+      out.write(text)
+      out.close()
   
 if __name__ == '__main__':
   main()

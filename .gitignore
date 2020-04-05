@@ -3,3 +3,7 @@ output_*
 
 # Solution
 solution/babynames.py
+
+# Summary files
+*.summary
+
