@@ -86,8 +86,13 @@ def main():
   # +++your code here+++
   # For each filename, get the names, then either print the text output
   # or write it to a summary file
-  name_ranks = extract_names(sys.argv[1])
-  print('\n'.join(name_ranks))
+  for filename in args:
+    name_ranks = extract_names(filename)
+    if not summary:
+      print('\n'.join(name_ranks))
+    else:
+      # write to summary
+      pass
   
 if __name__ == '__main__':
   main()
