@@ -49,10 +49,20 @@ def extract_names(filename):
   year = match.group(1)
   print(year)
 
+  dict = {}
   matches = re.findall(r'<tr.*><td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>', open(filename, 'r').read())
   for match in matches:
-    print(match[0], match[1])
-    print(match[0], match[2])
+    # print(match[0], match[1])
+    # print(match[0], match[2])
+    if match[1] not in dict:
+      dict[match[1]] = match[0]
+    if match[2] not in dict:
+      dict[match[2]] = match[0]
+
+
+  for name, rank in dict.items():
+    print(name, rank)
+
 
 
   return
