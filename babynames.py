@@ -45,9 +45,11 @@ def extract_names(filename):
   #   for line in f:
   #     print(line, end='')
 
+  res = []
+
   match = re.search(r'Popularity in (\d+)', open(filename, 'r').read())
   year = match.group(1)
-  print(year)
+  res.append(year)
 
   dict = {}
   matches = re.findall(r'<tr.*><td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>', open(filename, 'r').read())
@@ -59,14 +61,11 @@ def extract_names(filename):
     if match[2] not in dict:
       dict[match[2]] = match[0]
 
+  sorted_names = sorted(dict.keys())
+  for name in sorted_names:
+    res.append(name + " " + dict[name])
 
-  for name, rank in dict.items():
-    print(name, rank)
-
-
-
-  return
-
+  return res
 
 def main():
   # This command-line parsing code is provided.
@@ -87,7 +86,8 @@ def main():
   # +++your code here+++
   # For each filename, get the names, then either print the text output
   # or write it to a summary file
-  extract_names(sys.argv[1])
+  name_ranks = extract_names(sys.argv[1])
+  print('\n'.join(name_ranks))
   
 if __name__ == '__main__':
   main()
