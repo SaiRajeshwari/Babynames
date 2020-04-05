@@ -41,9 +41,12 @@ def extract_names(filename):
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
   # +++your code here+++
-  with open(filename) as f:
-    for line in f:
-      print(line, end='')
+  # with open(filename) as f:
+  #   for line in f:
+  #     print(line, end='')
+
+  match = re.search(r'Popularity in (\d+)', open(filename, 'r').read())
+  print(match.group(1))
 
   return
 
